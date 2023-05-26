@@ -7,15 +7,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_input_text(expected_result, actual_result):
-    assert expected_result == actual_result, \
-        f"expected {expected_result}, got {actual_result}"
+def test_substring(full_string, substring):
+    assert substring in full_string , f"expected {substring} to be substring of {full_string}"
 
 
 try:
-   # test_input_text(8, 11)
-   # test_input_text(11, 11)
-    test_input_text(11, 15)
+    test_substring("fulltext", "some_value")
+   # test_substring(11, 11)
+   # test_substring("11", "15")
 
 finally:
     # ожидание чтобы визуально оценить результаты прохождения скрипта
