@@ -7,34 +7,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def calc(x):
-    return str(math.log(abs(12 * math.sin(int(x)))))
+def test_input_text(expected_result, actual_result):
+    assert expected_result == actual_result, \
+        f"expected {expected_result}, got {actual_result}"
 
 
 try:
-    browser = webdriver.Chrome()
-    link = "http://suninjuly.github.io/explicit_wait2.html"
-    browser.get(link)
-
-    buttonBook = browser.find_element(By.ID, "book")
-    #price = browser.find_element(By.ID, "price")
-    WebDriverWait(browser, 12).until(
-        EC.text_to_be_present_in_element((By.ID, "price"), "100")
-    )
-    buttonBook.click()
-
-    x_element = browser.find_element(By.ID, "input_value")
-    x = x_element.text
-    y = calc(x)
-
-    answerInput = browser.find_element(By.ID, "answer")
-    answerInput.send_keys(y)
-
-    button = browser.find_element(By.ID, "solve")
-    button.click()
+   # test_input_text(8, 11)
+   # test_input_text(11, 11)
+    test_input_text(11, 15)
 
 finally:
     # ожидание чтобы визуально оценить результаты прохождения скрипта
     time.sleep(10)
-    # закрываем браузер после всех манипуляций
-    browser.quit()
+    f"Something went wrong"
+
