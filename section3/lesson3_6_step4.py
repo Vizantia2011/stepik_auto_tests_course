@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
+import Credentials
 
 @pytest.fixture(scope="function")
 def browser():
@@ -38,8 +39,8 @@ def test_entering_answers(browser, link):
     )
     browser.find_element(By.CSS_SELECTOR, "a[data-tab-name = login]").click()
 
-    browser.find_element(By.XPATH, "//input[@name='login']").send_keys("LOGIN")
-    browser.find_element(By.XPATH, "//input[@name='password']").send_keys("PASSWORD")
+    browser.find_element(By.XPATH, "//input[@name='login']").send_keys(Credentials.LOGIN)
+    browser.find_element(By.XPATH, "//input[@name='password']").send_keys(Credentials.PASSWORD)
     browser.find_element(By.XPATH, "//button[text()='Войти']").click()
 
     time.sleep(3)
